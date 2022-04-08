@@ -10,8 +10,8 @@ const firebaseConfig = {
   projectId: "router-firebase-intigation",
   storageBucket: "router-firebase-intigation.appspot.com",
   messagingSenderId: "921541833531",
-  appId: "1:921541833531:web:ee885774c20711f8b2fd1e"
+  appId: "1:921541833531:web:ee885774c20711f8b2fd1e",
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
