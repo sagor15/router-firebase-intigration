@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { useEffect, useState } from "react";
+import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
 import { app } from "../firebase.init.js";
 
 const auth = getAuth(app);
@@ -19,6 +19,18 @@ const useRegister = () => {
       });
   };
 
-  return { user, signInWithGoogle };
+  const handleSingOut = () => {
+    signOut(auth).then(() => {
+      console.log("logout succesfull");
+    });
+  };
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      setUser(user);
+    });
+  }, []);
+
+  return { user, signInWithGoogle, handleSingOut };
 };
 export default useRegister;
